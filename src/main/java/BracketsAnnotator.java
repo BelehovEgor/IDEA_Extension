@@ -12,11 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BracketAnnotator implements Annotator {
+public class BracketsAnnotator implements Annotator {
 
-    private static final List<Color> colors = Arrays.asList(
-            Color.RED, Color.ORANGE, Color.YELLOW, Color.PINK, Color.BLUE, Color.CYAN, Color.GREEN
-    );
+    private static final BracketsColors colors = new BracketsColors();
 
     private static final Map<String, Integer> numbers = new HashMap<>();
 
@@ -39,7 +37,7 @@ public class BracketAnnotator implements Annotator {
             R_BRACKET
     );
 
-    private final int LENGTH = 1;
+    private static final int LENGTH = 1;
 
     @Override
     public void annotate(@NotNull PsiElement element, @NotNull AnnotationHolder holder) {
@@ -60,12 +58,11 @@ public class BracketAnnotator implements Annotator {
         Color color;
         int number = numbers.get(type);
 
-        if(openBrackets.contains(value)) {
+        if (openBrackets.contains(value)) {
             number++;
-            color = colors.get(number % 7);
-        }
-        else {
-            color = colors.get(number % 7);
+            color = colors.getColor(number % colors.getLength());
+        } else {
+            color = colors.getColor(number % colors.getLength());
             number--;
         }
         numbers.put(type, number);

@@ -8,6 +8,6 @@
     <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <annotator language="JAVA" implementationClass="BracketAnnotator"/>
+        <annotator language="JAVA" implementationClass="BracketsAnnotator"/>
     </extensions>
 </idea-plugin>
