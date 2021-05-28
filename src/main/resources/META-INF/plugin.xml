@@ -10,8 +10,4 @@
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="JAVA" implementationClass="BracketAnnotator"/>
     </extensions>
-
-    <actions>
-        <!-- Add your actions here -->
-    </actions>
 </idea-plugin>

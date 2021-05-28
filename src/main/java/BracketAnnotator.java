@@ -62,13 +62,10 @@ public class BracketAnnotator implements Annotator {
 
         if(openBrackets.contains(value)) {
             number++;
-            if(number == 7) {
-                number = 0;
-            }
-           color = colors.get(number);
+            color = colors.get(number % 7);
         }
         else {
-            color = colors.get(number);
+            color = colors.get(number % 7);
             number--;
         }
         numbers.put(type, number);
